@@ -75,38 +75,38 @@ def requestHandler(request_type):
         sys.exit()
 # Api : functionalities
 def httpHeader():
-	base = requestHandler(request_type="httpheaders")
-	return base
+    base = requestHandler(request_type="httpheaders")
+    return base
 def reverseHackTarget():
-	base = requestHandler(request_type="reverseiplookup")
-	return base
+    base = requestHandler(request_type="reverseiplookup")
+    return base
 def traceRoute():
-	base = requestHandler(request_type="mtr")
-	return base
+    base = requestHandler(request_type="mtr")
+    return base
 def whoIs():
-	base = requestHandler(request_type="whois")
-	return base
+    base = requestHandler(request_type="whois")
+    return base
 def dns():
-	base = requestHandler(request_type="dnslookup")
-	return base
+    base = requestHandler(request_type="dnslookup")
+    return base
 def reverseDns():
-	base = requestHandler(request_type="reversedns")
-	return base
+    base = requestHandler(request_type="reversedns")
+    return base
 def geoIp():
-	base = requestHandler(request_type="geoip")
-	return base
+    base = requestHandler(request_type="geoip")
+    return base
 def nmap():
-	base = requestHandler(request_type="nmap")
-	return base
+    base = requestHandler(request_type="nmap")
+    return base
 def findSharedServer():
-	base = requestHandler(request_type="findshareddns")
-	return base
+    base = requestHandler(request_type="findshareddns")
+    return base
 def pageLinks():
-	base = requestHandler(request_type="pagelinks")
-	return base	
+    base = requestHandler(request_type="pagelinks")
+    return base    
 # Generating reports in HTML format
 def generateHTML():
-	create = """<!DOCTYPE html>
+    create = """<!DOCTYPE html>
 <html>
 <head>
   <title>R3C0N1Z3R Report</title>
@@ -114,27 +114,27 @@ def generateHTML():
 <body>
  <center> <h1>R3C0N1Z3R Report - [{}]</h1></center>
  <strong>HTTP header information</strong>
-	<pre>{}</pre>
+    <pre>{}</pre>
     <strong>Trace Route</strong>
     <pre>{}</pre> 
   <strong>Whois Information</strong>
-	<pre>{}</pre>
-	<strong>DNS server record</strong>
-	<pre>{}</pre>
-	<strong><Nmap- running services/strong>
-	<pre>{}</pre>
-	<strong>Website on the same server</strong>
-	<pre>{}</pre>
-	<strong>Reverse IP Address</strong>
-	<pre>{}</pre>
-	<strong>Page Links</strong>
-	<pre>{}</pre><hr>
-	<center> All Rights Reserved &copy; <strong>R3CON1Z3R</strong></center>
+    <pre>{}</pre>
+    <strong>DNS server record</strong>
+    <pre>{}</pre>
+    <strong><Nmap- running services/strong>
+    <pre>{}</pre>
+    <strong>Website on the same server</strong>
+    <pre>{}</pre>
+    <strong>Reverse IP Address</strong>
+    <pre>{}</pre>
+    <strong>Page Links</strong>
+    <pre>{}</pre><hr>
+    <center> All Rights Reserved &copy; <strong>R3CON1Z3R</strong></center>
  
 </body>
 </html>
-    """.format(url,httpHeader(),traceRoute(),whoIs(),dns(),nmap(),findSharedServer(),reverseHackTarget(),pageLinks())	
-	return create
+    """.format(url,httpHeader(),traceRoute(),whoIs(),dns(),nmap(),findSharedServer(),reverseHackTarget(),pageLinks())    
+    return create
 # Saving the report
 def saveHTML():
     global R, B, C, W, Y, url, spinner
@@ -148,9 +148,9 @@ def saveHTML():
     print('{}[+] R3CON1Z3R Operation Completed!{}'.format(Y, W))
 
 def gaphy():
-	header()
-	saveHTML()
-	
+    header()
+    saveHTML()
+    
 
 def main():
     """
@@ -181,20 +181,19 @@ def main():
         print('{}[!] Please specify a domain'.format(Y, C))
         sys.exit()
     else:
-	if  args['about']:
-		about()
-	else: 
-        	url = args['domain']
-		if  url[0:8] == 'https://':
-			url = url.replace("https://","")
-		elif url[0:7] == 'http://':
-			url = url.replace("http://","")
-		else:
-			url = url
-        	
-    		# declare global spinner
-    		spinner = spin.create_spinner(before="Generating Report")
-    		gaphy()
+        if args['about']:
+            about()
+        else: 
+            url = args['domain']
+            if url[0:8] == 'https://':
+                url = url.replace("https://","")
+            elif url[0:7] == 'http://':
+                url = url.replace("http://","")
+            else:
+                url = url
+                # declare global spinner
+                spinner = spin.create_spinner(before="Generating Report")
+                gaphy()
 
 if __name__=="__main__":
-	main()
+    main()
